@@ -1,23 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/css/dashboard.css">
+    <title>Dashboard</title>
 </head>
+
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-6">
-                <h1>Home</h1>
-            </div>
-            <div class="col-6">
-                <h1>Dashboard</h1>
-            </div>
+    <section>
+        <ul>
+            <li><a href="?data=data_user">Data User</a></li>
+            <li><a href="?data=data_game_history">Data Game History</a></li>
+            <li><a href="?data=data_game_biodata">Data Game Biodata</a></li>
+            <li style="float:right"><a class="active" href="#about">Dashboard Admin</a></li>
+        </ul>
+
+        
+
+
+        <% if (label === 'data_user') { %>
+            <p class="du">Data User</p>        
+        <% } %>
+
+        <% if (label === 'data_game_history') { %>
+            <p class="du">Data Game History</p>        
+        <% } %>
+
+        <% if (label === 'data_game_biodata') { %>
+            <p class="du">Data Game Biodata</p>        
+        <% } %>
+
+            <!-- Data User -->
+        <div class="container">
+            <button class="btnAdd">add</button>
+            <% if (label === 'data_user') { %>
+                <table>
+                    <tr>
+                        <th>id</th>
+                        <th>email</th>
+                        <th>password</th>
+                        <th>Dibikin Pada</th>
+                        <th>Di Update pada</th>
+                        <th>action</th>
+                    </tr>
+                    <% for (let i = 0; i < biodata.length; i++) { %>
+                    <tr>
+                        <th><%= biodata[i].id %></th>
+                        <th><%= biodata[i].email %></th>
+                        <th><%= biodata[i].password %></th>
+                        <th><%= biodata[i].createdAt %></th>
+                        <th><%= biodata[i].updatedAt %></th>
+                        <th>
+                            <button class="pencil1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                              </svg></button>
+                        </th>
+                    </tr>
+                    <% } %>
+                </table>
+            <% } %>
         </div>
-    </div>
+
+        <!-- Game History -->
+        <div class="container">
+            <% if (label === 'data_game_history') { %>
+                <table>
+                    <tr>
+                        <th>id</th>
+                        <th>win</th>
+                        <th>lose</th>
+                        <th>Dibikin Pada</th>
+                        <th>Di Update pada</th>
+                        <th>action</th>
+                    </tr>
+                    <% for (let i = 0; i < biodata.length; i++) { %>
+                    <tr>
+                        <th><%= biodata[i].id %></th>
+                        <th><%= biodata[i].email %></th>
+                        <th><%= biodata[i].password %></th>
+                        <th><%= biodata[i].createdAt %></th>
+                        <th><%= biodata[i].updatedAt %></th>
+                        <th>
+                            <button class="pencil1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                              </svg></button>
+                        </th>
+                    </tr>
+                    <% } %>
+                </table>
+            <% } %>
+        </div>
+
+        </div>
+    </section>
 </body>
+
 </html>

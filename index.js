@@ -7,6 +7,38 @@ const {
   DataGameBiodata, DataGameHistory, DataUserGame
 } = require('./models')
 
+router.get('/dashboard', (req, res) => {
+  const data = req.query.data || 'data_user'
+
+  // ambil data dari database
+  if (data === 'data_game_biodata') {
+    res.render('dashboard', { label: data } );
+  } else if (data === 'data_game_history') {
+    res.render('dashboard', { label: data });
+  } else {
+    DataUserGame.findAll().then(biodata => {
+      
+      res.render('dashboard', { biodata, label: data } );
+    })
+  }
+  
+});
+
+// if (data === 'data_game_biodata'){
+//   DataGameBiodata.findAll().then(biodata => {
+//     res.render('dashboard',{ biodata,label:'data_game_biodata'})
+//   })
+// }else if (data === 'data_game_history'){
+//   DataGameHistory.findAll().then(history =>{
+//     res.render('dashboard',{history,label:'data_game_history'})
+//   })
+// }else{
+//   DataUserGame.findAll().then(user =>{
+//     res.render('dashboard',{biodata,label:'data_user_game'})
+//   })
+// }
+
+
 // Game Biodata
 //GET all articles
 router.post('/game-biodata', (req, res) => {
@@ -183,10 +215,6 @@ router.get('/game', (req, res) => {
 
 router.get('/login', (req, res) => {
   res.render('login');
-});
-
-router.get('/dashboard', (req, res) => {
-  res.render('dashboard');
 });
 
 // pengecekan user di database

@@ -1,0 +1,76 @@
+
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    display: block;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li:last-child {
+    border-right: none;
+  }
+  
+  li a {
+    display: flex;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color:brown;
+  }
+  
+  .active {
+    background-color: brown;
+  }
+
+  .box1{
+      border: 1px solid red;
+      display: block;
+  }
+
+  h4{
+      text-align: right;
+  }
+
+  table{
+      border: 1px solid black;
+      width: 100%;
+  }
+
+  th{
+      border: 1px solid black;
+  }
+
+
+  .thKanan{
+      width: 10%;
+  }
+
+  .btnAdd{
+      float: right;
+      width: 100px;
+      margin-bottom: 1rem;
+  }
+
+  .du{
+      font-size: 30px;
+  }
+
+  .pencil1{
+    cursor: pointer;
+  }
+
+  .btnAdd{
+    cursor: pointer;
+  }
