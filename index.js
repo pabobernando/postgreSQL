@@ -12,9 +12,15 @@ router.get('/dashboard', (req, res) => {
 
   // ambil data dari database
   if (data === 'data_game_biodata') {
-    res.render('dashboard', { label: data } );
+    DataGameBiodata.findAll().then(biodata =>{
+      res.render('dashboard',{biodata,label:data})
+    })
+    
   } else if (data === 'data_game_history') {
-    res.render('dashboard', { label: data });
+    DataGameHistory.findAll().then(history => {
+      res.render('dashboard', { history,label:data})
+    })
+  
   } else {
     DataUserGame.findAll().then(biodata => {
       
@@ -23,20 +29,6 @@ router.get('/dashboard', (req, res) => {
   }
   
 });
-
-// if (data === 'data_game_biodata'){
-//   DataGameBiodata.findAll().then(biodata => {
-//     res.render('dashboard',{ biodata,label:'data_game_biodata'})
-//   })
-// }else if (data === 'data_game_history'){
-//   DataGameHistory.findAll().then(history =>{
-//     res.render('dashboard',{history,label:'data_game_history'})
-//   })
-// }else{
-//   DataUserGame.findAll().then(user =>{
-//     res.render('dashboard',{biodata,label:'data_user_game'})
-//   })
-// }
 
 
 // Game Biodata
